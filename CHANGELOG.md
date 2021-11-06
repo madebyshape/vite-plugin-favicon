@@ -1,5 +1,15 @@
-## [1.0.8](https://github.com/josh-hemphill/vite-plugin-favicon/compare/v1.0.7...v1.0.8) (2021-05-13)
+# Vite Plugin Favicon
 
+All notable changes to this project will be documented in this file.
+
+## 1.1.0 - 2021.11.06
+### Added
+* Added the ability to set `inject: false` in the passed in plugin config, to generate the `webapp.html` file ([#2](https://github.com/josh-hemphill/vite-plugin-favicon/pull/2))
+
+### Fixed
+* Fixed an issue where it doesn't work in dev mode ([#1](https://github.com/josh-hemphill/vite-plugin-favicon/issues/1))
+
+## [1.0.8](https://github.com/josh-hemphill/vite-plugin-favicon/compare/v1.0.7...v1.0.8) (2021-05-13)
 
 ### Bug Fixes
 
