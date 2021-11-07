@@ -1,15 +1,58 @@
 # Favicons Vite Plugin
 
-<!-- cspell: disable bracketsstartstop -->
+This is a fork of [josh-hemphill/vite-plugin-favicon](https://github.com/josh-hemphill/vite-plugin-favicon). It was forked and published on npm under vite-plugin-favicon2 in order to address the following issues/features:
+* [#1](https://github.com/josh-hemphill/vite-plugin-favicon/issues/1) - Doesn't appear to work in dev mode
+* [#3](https://github.com/josh-hemphill/vite-plugin-favicon/issues/3) - Allow vite-plugin-favicon to save the HTML to a file
 
-[![version](https://img.shields.io/github/v/tag/josh-hemphill/vite-plugin-favicon?sort=semver&style=?style=plastic)](https://github.com/josh-hemphill/vite-plugin-favicon/releases)
-[![NPM](https://img.shields.io/static/v1?label=&message=NPM&color=informational&style=?style=plastic)](https://npmjs.org/package/vite-plugin-favicon)
-[![Codecov](https://img.shields.io/codecov/c/github/josh-hemphill/vite-plugin-favicon.svg?style=?style=plastic)](https://codecov.io/gh/josh-hemphill/vite-plugin-favicon)
-[![Libraries.io dependency status for latest release](https://img.shields.io/librariesio/release/npm/vite-plugin-favicon?label=Deps&style=?style=plastic)](https://libraries.io/npm/vite-plugin-favicon)
-[![Rate on Openbase](https://badges.openbase.io/js/rating/vite-plugin-favicon.svg)](https://openbase.io/js/vite-plugin-favicon?utm_source=embedded&utm_medium=badge&utm_campaign=rate-badge)
-[![Test](https://github.com/josh-hemphill/vite-plugin-favicon/actions/workflows/test.yml/badge.svg)](https://github.com/josh-hemphill/vite-plugin-favicon/actions/workflows/test.yml)
-[![Release](https://github.com/josh-hemphill/vite-plugin-favicon/actions/workflows/release.yml/badge.svg)](https://github.com/josh-hemphill/vite-plugin-favicon/actions/workflows/release.yml)
+Install with:
 
+```
+npm install --save-dev vite-plugin-favicon2
+```
+
+Add the plugin to your vite config as follows:
+
+```javascript
+const ViteFaviconsPlugin = require('vite-plugin-favicon2')
+// or ESM
+import { ViteFaviconsPlugin } from "vite-plugin-favicon2";
+```
+
+...and then add to your `vite.config.js`:
+
+```javascript
+plugins: [
+  ViteFaviconsPlugin({
+    /** Your source logo (Will default to ) */
+    logo?: "assets/logo.png",
+    /** Inject html links/metadata -- set to `false` to generate a webapp.html` file. */
+    inject?: true,
+    /** `Favicons` configuration options
+    *  - [See `favicons` documentation](https://github.com/itgalaxy/favicons) */
+    favicons?: FaviconsConfig,
+    /** The root of the project from which you want to load metadata */
+    projectRoot?: process.cwd(),
+
+    /** prefix is delegated to Rollup/Vite (keeping for people migrating from Webpack)
+    * @deprecated */
+    prefix?: string,
+    /** Caching is delegated to Rollup/Vite (keeping for people migrating from Webpack)
+    * @deprecated */
+    cache?: boolean,
+    /** Public Path is delegated to Rollup/Vite (keeping for people migrating from Webpack)
+    * @deprecated */
+    publicPath?: string,
+    /** Output Path is delegated to Rollup/Vite (keeping for people migrating from Webpack)
+    * @deprecated */
+    outputPath?: string,
+  })
+]
+```
+
+The original README.md follows, unmodified:
+
+-----
+  
 Leverages on [favicons](https://github.com/haydenbleasel/favicons) to automatically generate your favicons for you.
 And if you want to also consolidate your PWA manifest, will generate that as well with linked icons.
 
