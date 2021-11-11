@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## 1.1.1 - 2021.11.11
+### Fixed
+* Output the generated images without a hash in the names
+
 ## 1.1.0 - 2021.11.06
 ### Added
 * Added the ability to set `inject: false` in the passed in plugin config, to generate the `webapp.html` file ([#2](https://github.com/josh-hemphill/vite-plugin-favicon/pull/2))
