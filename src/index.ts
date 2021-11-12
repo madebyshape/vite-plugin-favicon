@@ -96,7 +96,7 @@ export const ViteFaviconsPlugin = (options: FaviconsPluginArgs = {} ): Plugin =>
 				assetIds.set(name, ctx.emitFile({type: 'asset', fileName: name, source: contents}));
 			}
 			for (const {name, contents} of res.images) {
-				assetIds.set(name, ctx.emitFile({type: 'asset', name, source: contents}));
+				assetIds.set(name, ctx.emitFile({type: 'asset', fileName: name, source: contents}));
 			}
 			if (!lOptions.inject) {
 				const name = 'webapp.html';
