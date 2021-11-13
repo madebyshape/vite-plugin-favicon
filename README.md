@@ -3,6 +3,7 @@
 This is a fork of [josh-hemphill/vite-plugin-favicon](https://github.com/josh-hemphill/vite-plugin-favicon). It was forked and published on npm under vite-plugin-favicon2 in order to address the following issues/features:
 * [#1](https://github.com/josh-hemphill/vite-plugin-favicon/issues/1) - Doesn't appear to work in dev mode
 * [#3](https://github.com/josh-hemphill/vite-plugin-favicon/issues/3) - Allow vite-plugin-favicon to save the HTML to a file
+* Un-deprecated the `outputPath` config setting, to allow you to specify where the output assets are saved, relative to the Vite output directory
 
 Install with:
 
@@ -23,28 +24,37 @@ import { ViteFaviconsPlugin } from "vite-plugin-favicon2";
 ```javascript
 plugins: [
   ViteFaviconsPlugin({
-    /** Your source logo (Will default to ) */
-    logo?: "assets/logo.png",
-    /** Inject html links/metadata -- set to `false` to generate a webapp.html` file. */
-    inject?: true,
-    /** `Favicons` configuration options
-    *  - [See `favicons` documentation](https://github.com/itgalaxy/favicons) */
-    favicons?: FaviconsConfig,
-    /** The root of the project from which you want to load metadata */
-    projectRoot?: process.cwd(),
-
-    /** prefix is delegated to Rollup/Vite (keeping for people migrating from Webpack)
-    * @deprecated */
-    prefix?: string,
-    /** Caching is delegated to Rollup/Vite (keeping for people migrating from Webpack)
-    * @deprecated */
-    cache?: boolean,
-    /** Public Path is delegated to Rollup/Vite (keeping for people migrating from Webpack)
-    * @deprecated */
-    publicPath?: string,
-    /** Output Path is delegated to Rollup/Vite (keeping for people migrating from Webpack)
-    * @deprecated */
-    outputPath?: string,
+	/** Your source logo (Will default to )
+		@default "assets/logo.png"
+	 */
+	logo?: string,
+	/** Inject html links/metadata -- set to `false` to generate a webapp.html` file.
+		@default true
+	 */
+	inject?: boolean,
+	/** `Favicons` configuration options
+	 *  - [See `favicons` documentation](https://github.com/itgalaxy/favicons)
+	 */
+	favicons?: FaviconsConfig,
+	/** The root of the project from which you want to load metadata
+		@default process.cwd()
+	 */
+	projectRoot?: string,
+	/** Output Path for the favicon images & files, relative to the Vite output directory
+	 */
+	outputPath?: string,
+	/** prefix is delegated to Rollup/Vite (keeping for people migrating from Webpack)
+	 * @deprecated
+	 */
+	prefix?: string,
+	/** Caching is delegated to Rollup/Vite (keeping for people migrating from Webpack)
+	 * @deprecated
+	 */
+	cache?: boolean,
+	/** Public Path is delegated to Rollup/Vite (keeping for people migrating from Webpack)
+	 * @deprecated
+	 */
+	publicPath?: string,
   })
 ]
 ```
