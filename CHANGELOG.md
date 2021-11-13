@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## 1.1.2 - 2021.11.12
+### Changed
+* Un-deprecated the `outputPath` config setting, to allow you to specify where the output assets are saved, relative to the Vite output directory
+
 ## 1.1.1 - 2021.11.11
 ### Fixed
 * Output the generated images without a hash in the names
