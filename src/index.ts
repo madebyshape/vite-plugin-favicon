@@ -95,19 +95,19 @@ export const ViteFaviconsPlugin = (options: FaviconsPluginArgs = {} ): Plugin =>
 		if (viteConfig.command === 'build') {
 			for (const {name, contents} of res.files) {
 				const outputPath = lOptions.outputPath === undefined ? '' : lOptions.outputPath;
-				const filePath = path.join(viteConfig.base.replace(/^\/+/, ''), viteConfig.build.assetsDir, outputPath, name);
+				const filePath = path.join(viteConfig.build.assetsDir, outputPath, name);
 				assetIds.set(name, ctx.emitFile({type: 'asset', fileName: filePath, source: contents}));
 			}
 			for (const {name, contents} of res.images) {
 				const outputPath = lOptions.outputPath === undefined ? '' : lOptions.outputPath;
-				const filePath = path.join(viteConfig.base.replace(/^\/+/, ''), viteConfig.build.assetsDir, outputPath, name);
+				const filePath = path.join(viteConfig.build.assetsDir, outputPath, name);
 				assetIds.set(name, ctx.emitFile({type: 'asset', fileName: filePath, source: contents}));
 			}
 			if (!lOptions.inject) {
 				const name = 'webapp.html';
 				const contents = res.html.join("\n");
 				const outputPath = lOptions.outputPath === undefined ? '' : lOptions.outputPath;
-				const filePath = path.join(viteConfig.base.replace(/^\/+/, ''), viteConfig.build.assetsDir, outputPath, name);
+				const filePath = path.join(viteConfig.build.assetsDir, outputPath, name);
 				assetIds.set(name, ctx.emitFile({type: 'asset', fileName: filePath, source: contents}));
 			}
 		}
