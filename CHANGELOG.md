@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## 1.1.4 - 2021.11.13
+### Fixed
+* Fixed `outputPath` if the Vite `base` config is set
+
 ## 1.1.3 - 2021.11.13
 ### Changed
 * The `outputPath` config setting is now relative to the Vite assets directory, fixing the paths in the generated `webapp.html`
