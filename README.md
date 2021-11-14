@@ -3,7 +3,7 @@
 This is a fork of [josh-hemphill/vite-plugin-favicon](https://github.com/josh-hemphill/vite-plugin-favicon). It was forked and published on npm under vite-plugin-favicon2 in order to address the following issues/features:
 * [#1](https://github.com/josh-hemphill/vite-plugin-favicon/issues/1) - Doesn't appear to work in dev mode
 * [#3](https://github.com/josh-hemphill/vite-plugin-favicon/issues/3) - Allow vite-plugin-favicon to save the HTML to a file
-* Un-deprecated the `outputPath` config setting, to allow you to specify where the output assets are saved, relative to the Vite output directory
+* Un-deprecated the `outputPath` config setting, to allow you to specify where the output assets are saved, relative to the Vite assets directory
 
 Install with:
 
@@ -40,7 +40,7 @@ plugins: [
 		@default process.cwd()
 	 */
 	projectRoot?: string,
-	/** Output Path for the favicon images & files, relative to the Vite output directory
+	/** Output Path for the favicon images & files, relative to the Vite assets directory
 	 */
 	outputPath?: string,
 	/** prefix is delegated to Rollup/Vite (keeping for people migrating from Webpack)

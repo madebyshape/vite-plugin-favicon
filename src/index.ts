@@ -25,7 +25,7 @@ export type ViteFaviconsPluginOptions = {
 		@default process.cwd()
 	 */
 	projectRoot?: string,
-	/** Output Path for the favicon images & files, relative to the Vite output directory
+	/** Output Path for the favicon images & files, relative to the Vite assets directory
 	 */
 	outputPath?: string,
 	/** prefix is delegated to Rollup/Vite (keeping for people migrating from Webpack)
@@ -78,7 +78,8 @@ export const ViteFaviconsPlugin = (options: FaviconsPluginArgs = {} ): Plugin =>
 	});
 	const getFavicons = async () => {
 		if (lOptions && lOptions.favicons) {
-			lOptions.favicons.path = path.join(viteConfig.base, viteConfig.build.assetsDir);
+			const outputPath = lOptions.outputPath === undefined ? '' : lOptions.outputPath;
+			lOptions.favicons.path = path.join(viteConfig.base, viteConfig.build.assetsDir, outputPath);
 		}
 		const faviconConfig = getDefaultFaviconConfig(lOptions);
 		return await favicons(LOGO_PATH,faviconConfig);
@@ -93,17 +94,20 @@ export const ViteFaviconsPlugin = (options: FaviconsPluginArgs = {} ): Plugin =>
 		// Only emit files if we're doing a build
 		if (viteConfig.command === 'build') {
 			for (const {name, contents} of res.files) {
-				const filePath = path.join(lOptions.outputPath === undefined ? '' : lOptions.outputPath, name);
+				const outputPath = lOptions.outputPath === undefined ? '' : lOptions.outputPath;
+				const filePath = path.join(viteConfig.base.replace(/^\/+/, ''), viteConfig.build.assetsDir, outputPath, name);
 				assetIds.set(name, ctx.emitFile({type: 'asset', fileName: filePath, source: contents}));
 			}
 			for (const {name, contents} of res.images) {
-				const filePath = path.join(lOptions.outputPath === undefined ? '' : lOptions.outputPath, name);
+				const outputPath = lOptions.outputPath === undefined ? '' : lOptions.outputPath;
+				const filePath = path.join(viteConfig.base.replace(/^\/+/, ''), viteConfig.build.assetsDir, outputPath, name);
 				assetIds.set(name, ctx.emitFile({type: 'asset', fileName: filePath, source: contents}));
 			}
 			if (!lOptions.inject) {
 				const name = 'webapp.html';
 				const contents = res.html.join("\n");
-				const filePath = path.join(lOptions.outputPath === undefined ? '' : lOptions.outputPath, name);
+				const outputPath = lOptions.outputPath === undefined ? '' : lOptions.outputPath;
+				const filePath = path.join(viteConfig.base.replace(/^\/+/, ''), viteConfig.build.assetsDir, outputPath, name);
 				assetIds.set(name, ctx.emitFile({type: 'asset', fileName: filePath, source: contents}));
 			}
 		}
