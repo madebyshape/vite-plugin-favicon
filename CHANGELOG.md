@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## 1.1.5 - 2023.02.17
+### Changed
+* Changed the plugin to only be applied during the `build` phase, which massively speeds up Vite dev server cold start times
+
 ## 1.1.4 - 2021.11.13
 ### Fixed
 * Fixed `outputPath` if the Vite `base` config is set
