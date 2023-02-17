@@ -126,6 +126,7 @@ export const ViteFaviconsPlugin = (options: FaviconsPluginArgs = {} ): Plugin =>
 
 	return {
 		name: 'vite-plugin-favicon',
+		apply: 'build',
 		async buildStart () {
 			await rebuildFavicons(this);
 		},
